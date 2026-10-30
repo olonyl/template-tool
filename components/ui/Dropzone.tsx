@@ -33,7 +33,7 @@ export function Dropzone({
         setDragging(false);
         handleFiles(e.dataTransfer.files);
       }}
-      className={`relative flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-6 text-center transition-colors cursor-pointer ${
+      className={`relative flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-6 text-center transition-colors ${
         dragging ? "border-[#4aa8e8] bg-[#eaf4fd]" : "border-[#c7d3ea] bg-white hover:bg-[#f4f6fb]"
       }`}
       onClick={() => inputRef.current?.click()}
@@ -56,7 +56,7 @@ export function Dropzone({
               e.stopPropagation();
               onClear();
             }}
-            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0f2b]/80 text-white hover:bg-[#0d0f2b]"
+            className="absolute right-2 top-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-[#0d0f2b]/80 text-white hover:bg-[#0d0f2b]"
             aria-label="Quitar imagen"
           >
             <X size={14} />

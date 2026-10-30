@@ -21,7 +21,7 @@ export function VariantSelector({
           key={opt.id}
           type="button"
           onClick={() => onChange(opt.id)}
-          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors cursor-pointer ${
             value === opt.id
               ? "bg-gradient-to-br from-[#bfe3ff] via-[#4aa8e8] to-[#15649f] text-[#0d0f2b] shadow-sm"
               : "text-[#0d0f2b]/70 hover:bg-[#f4f6fb]"

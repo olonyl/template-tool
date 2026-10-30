@@ -41,7 +41,7 @@ export function PriceRowsEditor({
               type="button"
               onClick={() => remove(i)}
               disabled={rows.length <= 1}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-[#9399b3] hover:bg-red-50 hover:text-red-600 disabled:opacity-30"
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-[#9399b3] hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-30"
               aria-label="Quitar precio"
             >
               <Trash2 size={16} />
@@ -52,7 +52,7 @@ export function PriceRowsEditor({
       <button
         type="button"
         onClick={add}
-        className="flex items-center gap-1.5 self-start rounded-lg px-2 py-1.5 text-sm font-semibold text-[#15649f] hover:bg-[#eaf4fd]"
+        className="flex cursor-pointer items-center gap-1.5 self-start rounded-lg px-2 py-1.5 text-sm font-semibold text-[#15649f] hover:bg-[#eaf4fd]"
       >
         <Plus size={16} /> Agregar precio
       </button>

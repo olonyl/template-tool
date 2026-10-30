@@ -66,7 +66,7 @@ export function ImageCropperModal({
       <div className="flex w-full max-w-lg flex-col gap-4 rounded-2xl bg-white p-5">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-bold text-[#0d0f2b]">Recorta tu imagen (1:1)</h3>
-          <button type="button" onClick={onCancel} className="text-[#9399b3] hover:text-[#0d0f2b]">
+          <button type="button" onClick={onCancel} className="cursor-pointer text-[#9399b3] hover:text-[#0d0f2b]">
             <X size={18} />
           </button>
         </div>
@@ -92,6 +92,7 @@ export function ImageCropperModal({
             step={0.05}
             value={zoom}
             onChange={(e) => setZoom(Number(e.target.value))}
+            className="cursor-pointer"
           />
         </label>
 
@@ -99,7 +100,7 @@ export function ImageCropperModal({
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-full px-4 py-2 text-sm font-semibold text-[#0d0f2b] hover:bg-[#f4f6fb]"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-[#0d0f2b] hover:bg-[#f4f6fb] cursor-pointer"
           >
             Cancelar
           </button>
@@ -107,7 +108,7 @@ export function ImageCropperModal({
             type="button"
             onClick={handleConfirm}
             disabled={working}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-br from-[#bfe3ff] via-[#4aa8e8] to-[#15649f] px-5 py-2 text-sm font-bold text-[#0d0f2b] disabled:opacity-50"
+            className="flex items-center gap-2 rounded-full bg-gradient-to-br from-[#bfe3ff] via-[#4aa8e8] to-[#15649f] px-5 py-2 text-sm font-bold text-[#0d0f2b] disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
           >
             <Check size={16} /> Usar recorte
           </button>

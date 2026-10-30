@@ -146,7 +146,7 @@ export function PromoForm() {
           type="button"
           onClick={handleGenerate}
           disabled={loading}
-          className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-[#bfe3ff] via-[#4aa8e8] to-[#15649f] py-3 font-bold text-[#0d0f2b] shadow-lg shadow-[#4aa8e8]/30 transition-opacity disabled:opacity-50"
+          className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gradient-to-br from-[#bfe3ff] via-[#4aa8e8] to-[#15649f] py-3 font-bold text-[#0d0f2b] shadow-lg shadow-[#4aa8e8]/30 transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Sparkles size={18} />
           {loading ? "Generando..." : "Generar imagen"}
@@ -159,7 +159,7 @@ export function PromoForm() {
           <GeneratingOverlay />
         ) : previewUrl ? (
           <>
-            <button type="button" onClick={() => setLightboxOpen(true)} className="group relative w-full">
+            <button type="button" onClick={() => setLightboxOpen(true)} className="group relative w-full cursor-pointer">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={previewUrl} alt="Vista previa de la promoción" className="w-full rounded-xl border border-[#c7d3ea]" />
               <span className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 opacity-0 transition group-hover:bg-black/40 group-hover:opacity-100">
@@ -169,7 +169,7 @@ export function PromoForm() {
             <a
               href={previewUrl}
               download={`promo-${variant}.png`}
-              className="flex items-center gap-2 text-sm font-bold text-[#15649f] hover:underline"
+              className="flex cursor-pointer items-center gap-2 text-sm font-bold text-[#15649f] hover:underline"
             >
               <Download size={16} /> Descargar PNG
             </a>

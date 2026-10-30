@@ -5,6 +5,7 @@ export interface PriceRow {
 }
 
 export interface PromoInput {
+  profile?: "taller";
   variant: "meta" | "gbp";
   title: string;
   badge: string;
@@ -14,3 +15,16 @@ export interface PromoInput {
   /** Background image as a data: URL (uploaded by the user, never stored on disk) */
   imageDataUrl: string;
 }
+
+export interface ChikiTechInput {
+  profile: "chikitech";
+  model: string;
+  specs: string[];
+  giftBadge: string;
+  price: string;
+  phone: string;
+  /** Product cutout as a data: URL, ideally with a transparent background */
+  imageDataUrl: string;
+}
+
+export type RenderPayload = PromoInput | ChikiTechInput;

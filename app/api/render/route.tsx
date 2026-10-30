@@ -4,17 +4,20 @@ import { join } from "node:path";
 import { loadGoogleFont } from "@/lib/og-font";
 import { GbpTemplate } from "@/lib/templates/gbp";
 import { MetaTemplate } from "@/lib/templates/meta";
-import type { PromoInput } from "@/lib/types";
+import { ChikiTechTemplate } from "@/lib/templates/chikitech";
+import type { RenderPayload } from "@/lib/types";
+
+function readAsDataUri(filename: string, mime: string) {
+  const bytes = readFileSync(join(process.cwd(), "public", filename));
+  return `data:${mime};base64,${bytes.toString("base64")}`;
+}
 
 export async function POST(request: Request) {
-  const data = (await request.json()) as PromoInput;
+  const data = (await request.json()) as RenderPayload;
 
   if (!data.imageDataUrl) {
-    return new Response("Falta la imagen de fondo", { status: 400 });
+    return new Response("Falta la imagen", { status: 400 });
   }
-
-  const logoSvg = readFileSync(join(process.cwd(), "public", "logo.svg"), "utf-8");
-  const logoDataUri = `data:image/svg+xml;base64,${Buffer.from(logoSvg).toString("base64")}`;
 
   const [poppinsBlack, poppinsBold, interBold, interSemibold] = await Promise.all([
     loadGoogleFont("Poppins", 900),
@@ -23,12 +26,22 @@ export async function POST(request: Request) {
     loadGoogleFont("Inter", 600),
   ]);
 
-  const element =
-    data.variant === "gbp" ? (
-      <GbpTemplate data={data} logoDataUri={logoDataUri} />
-    ) : (
-      <MetaTemplate data={data} logoDataUri={logoDataUri} />
-    );
+  let element: React.ReactElement;
+
+  if (data.profile === "chikitech") {
+    const logoDataUri = readAsDataUri("chikitech-logo.png", "image/png");
+    const bgDataUri = readAsDataUri("chikitech-bg.png", "image/png");
+    element = <ChikiTechTemplate data={data} logoDataUri={logoDataUri} bgDataUri={bgDataUri} />;
+  } else {
+    const logoSvg = readFileSync(join(process.cwd(), "public", "logo.svg"), "utf-8");
+    const logoDataUri = `data:image/svg+xml;base64,${Buffer.from(logoSvg).toString("base64")}`;
+    element =
+      data.variant === "gbp" ? (
+        <GbpTemplate data={data} logoDataUri={logoDataUri} />
+      ) : (
+        <MetaTemplate data={data} logoDataUri={logoDataUri} />
+      );
+  }
 
   return new ImageResponse(element, {
     width: 1080,

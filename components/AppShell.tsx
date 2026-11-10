@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { Image, Megaphone } from "lucide-react";
+import { FacebookCoverForm } from "@/components/FacebookCoverForm";
 import { PromoForm } from "@/components/PromoForm";
 import { ProfileSelector } from "@/components/ui/ProfileSelector";
 import { PROFILES, type Profile } from "@/lib/profiles";
 
 export function AppShell() {
   const [profile, setProfile] = useState<Profile>("taller");
+  const [view, setView] = useState<"promos" | "cover">("promos");
   const config = PROFILES[profile];
 
   return (
@@ -34,8 +37,19 @@ export function AppShell() {
         </div>
         <ProfileSelector value={profile} onChange={setProfile} />
       </header>
+      {profile === "taller" && <div role="tablist" aria-label="Formato" className="flex gap-2 border-b border-[#e3e8f2] px-4 py-3 sm:px-8">
+        {([
+          { id: "promos", label: "Promociones", icon: Megaphone },
+          { id: "cover", label: "Portada Facebook", icon: Image },
+        ] as const).map(({ id, label, icon: Icon }) => (
+          <button key={id} type="button" role="tab" aria-selected={view === id} onClick={() => setView(id)}
+            className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold ${view === id ? "bg-[#15649f] text-white" : "text-[#475569] hover:bg-[#eaf4fd]"}`}>
+            <Icon size={16} />{label}
+          </button>
+        ))}
+      </div>}
       <main className="flex flex-1 w-full">
-        <PromoForm key={profile} profile={profile} />
+        {profile === "taller" && view === "cover" ? <FacebookCoverForm /> : <PromoForm key={profile} profile={profile} />}
       </main>
     </div>
   );

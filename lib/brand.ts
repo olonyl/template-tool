@@ -7,7 +7,7 @@ export const BRAND = {
   ink: "#f5f8ff",
   muted: "#9399b3",
   line: "rgba(255,255,255,0.14)",
-  name: "El Taller de Don Ronald",
+  name: "Taller Don Ronald",
   phone: "8364-1060",
   phoneWhatsapp: "50583641060",
 } as const;

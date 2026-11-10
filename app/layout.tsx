@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Generador de promociones",
-  description: "Herramienta interna — El Taller de Don Ronald",
+  description: "Herramienta interna — Taller Don Ronald",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

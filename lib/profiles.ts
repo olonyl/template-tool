@@ -1,6 +1,6 @@
 export const PROFILES = {
   taller: {
-    name: "El Taller de Don Ronald",
+    name: "Taller Don Ronald",
     headerBg: "#0d0f2b",
     headerSub: "#9399b3",
   },

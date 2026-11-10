@@ -10,7 +10,7 @@ export function ProfileSelector({
   onChange: (value: "taller" | "chikitech") => void;
 }) {
   const options: { id: "taller" | "chikitech"; label: string; icon: React.ReactNode }[] = [
-    { id: "taller", label: "El Taller de Don Ronald", icon: <Wrench size={16} /> },
+    { id: "taller", label: "Taller Don Ronald", icon: <Wrench size={16} /> },
     { id: "chikitech", label: "Chiki Tech", icon: <Laptop size={16} /> },
   ];
 
